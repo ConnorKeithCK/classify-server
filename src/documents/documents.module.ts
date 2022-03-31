@@ -9,4 +9,4 @@ import { DocumentsService } from './documents.service'
     controllers: [DocumentsController],
     providers: [DocumentsService],
   })
-  export class CatsModule {}
+  export class DocumentsModule {}
