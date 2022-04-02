@@ -13,31 +13,22 @@ export class DocumentsService {
 		return await this.documentModel.findById(documentId);
 	}
 
-	async getFiles(investorId) {
-		return await this.documentModel.find({ folder: investorId });
+	async getFiles() {
+		return await this.documentModel.find();
 	}
 
-	async createDocument(title, folder, type, gcloudPath) {
-		console.log(title, folder, type, gcloudPath);
-		return await this.documentModel.create({
-			title,
-			folder,
-			type,
-			gcloudPath,
-		});
+	async createDocument(/* title, folder, type, gcloudPath */) {
+		// return await this.documentModel.create({
+		// 	title,
+		// 	folder,
+		// 	type,
+		// 	gcloudPath,
+		// });
 	}
 
-	async deleteDocument(documentId) {
-		return await this.documentModel.findByIdAndDelete(documentId);
+	async deleteDocument(/* documentId */) {
+		// return await this.documentModel.findByIdAndDelete(documentId);
 	}
 
-	async updateDocument(documentId, title, folder, type, gcloudPath) {
-		const document = this.documentModel.findByIdAndUpdate(
-			documentId,
-			{ title, folder, type, gcloudPath },
-			{ new: true },
-		);
 
-		return await document.exec();
-	}
 }
