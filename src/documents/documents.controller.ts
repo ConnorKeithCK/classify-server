@@ -1,16 +1,18 @@
 import { Body, Controller, Delete, Get, Post, Query, Req, UploadedFile, UseInterceptors } from "@nestjs/common";
 import { AnyFilesInterceptor, FileInterceptor } from "@nestjs/platform-express";
+import { StorageService } from "src/storage/azure.service";
 import { DocumentsService } from "./documents.service";
 
 @Controller('documents')
 export class DocumentsController {
 	constructor(
 		private readonly documentsService: DocumentsService,
+		private readonly storageService: StorageService
 	) {}
 
-	@Get('')
-	async getDocument(@Query('documentId') documentId: string) {
-		return await this.documentsService.getFile(documentId)
+	@Get('view')
+	async getUrl(file) {
+		return await this.storageService.getSignedUrl(file)
 	}
 
 	@Get('')
@@ -20,10 +22,9 @@ export class DocumentsController {
 
 	@Post('')
 	@UseInterceptors(FileInterceptor('file'))
-	async createDocument(@UploadedFile() file: any, @Req() req) {
-		console.log(file)
-		// req.files
-		return await this.documentsService.createDocument(file);
+	async createDocument(@UploadedFile() file: any) {
+		const path = await this.storageService.uploadDocument(file)
+		return await this.documentsService.createDocument(file, path);
 	}
 
 	@Delete('')

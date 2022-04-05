@@ -17,10 +17,10 @@ export class DocumentsService {
 		return await this.documentModel.find();
 	}
 
-	async createDocument(file) {
+	async createDocument(file, path) {
 		return await this.documentModel.create({
 			title: file.originalname,
-			cloudPath: "acloudpath",
+			cloudPath: path,
 			agency: "cia",
 			btcHash: "faeofinaeoifnaef",
 			accessLevel: "secret"

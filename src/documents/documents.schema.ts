@@ -3,7 +3,7 @@ import { Document } from 'mongoose'
 
 export type ClassifyDocumentType = ClassifyDoc & Document
 
-@Schema()
+@Schema({ timestamps: true })
 export class ClassifyDoc {
     @Prop()
     title: string;
