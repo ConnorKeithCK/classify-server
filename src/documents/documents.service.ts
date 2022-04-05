@@ -17,13 +17,14 @@ export class DocumentsService {
 		return await this.documentModel.find();
 	}
 
-	async createDocument(/* title, folder, type, gcloudPath */) {
-		// return await this.documentModel.create({
-		// 	title,
-		// 	folder,
-		// 	type,
-		// 	gcloudPath,
-		// });
+	async createDocument(file) {
+		return await this.documentModel.create({
+			title: file.originalname,
+			cloudPath: "acloudpath",
+			agency: "cia",
+			btcHash: "faeofinaeoifnaef",
+			accessLevel: "secret"
+		});
 	}
 
 	async deleteDocument(/* documentId */) {

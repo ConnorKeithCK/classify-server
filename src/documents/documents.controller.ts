@@ -1,4 +1,5 @@
-import { Controller, Delete, Get, Post, Query } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Post, Query, Req, UploadedFile, UseInterceptors } from "@nestjs/common";
+import { AnyFilesInterceptor, FileInterceptor } from "@nestjs/platform-express";
 import { DocumentsService } from "./documents.service";
 
 @Controller('documents')
@@ -18,8 +19,11 @@ export class DocumentsController {
 	}
 
 	@Post('')
-	async createDocument() {
-		return await this.documentsService.createDocument();
+	@UseInterceptors(FileInterceptor('file'))
+	async createDocument(@UploadedFile() file: any, @Req() req) {
+		console.log(file)
+		// req.files
+		return await this.documentsService.createDocument(file);
 	}
 
 	@Delete('')
