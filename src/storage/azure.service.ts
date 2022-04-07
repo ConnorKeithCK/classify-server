@@ -41,7 +41,6 @@ export class StorageService {
 
         const containerClient = blobServiceClient.getContainerClient(process.env.AZURE_DOCS_CONTAINER)
         const blobClient = containerClient.getBlobClient(file)
-        console.log(url)
         return `${blobClient.url}?${url}`;
     }
 

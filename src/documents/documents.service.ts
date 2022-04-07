@@ -17,19 +17,14 @@ export class DocumentsService {
 		return await this.documentModel.find();
 	}
 
-	async createDocument(file, path) {
+	async createDocument(file, path, hash) {
 		return await this.documentModel.create({
 			title: file.originalname,
 			cloudPath: path,
-			agency: "cia",
-			btcHash: "faeofinaeoifnaef",
-			accessLevel: "secret"
+			agency: "FBI",
+			btcHash: hash,
+			accessLevel: "SECRET"
 		});
 	}
-
-	async deleteDocument(/* documentId */) {
-		// return await this.documentModel.findByIdAndDelete(documentId);
-	}
-
 
 }
