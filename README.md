@@ -1,3 +1,5 @@
+Want access to the application? E-mail me at keithcs@mail.uc.edu
+
 # Classify
 Classify aims to assess the feasibility of storing classified documents on a Hyperledger Fabric blockchain platform by providing a simple and intuitive proof of concept web application. Hyperledger Fabric platform was selected due to its permissioned structure and channels feature, making it a suitable application for government use cases. The languages and framework(s) selected for this project include ReactJS & NestJS. Both are extremely popular and utilize JavaScript, the world's most popular programming language (according to Stack Overflow) at the time this was written. By selecting two very popular and modern frameworks, I hope it eases the burden of finding talent to maintain and develop a similar system. 
 
